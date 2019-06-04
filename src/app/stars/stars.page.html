@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Stars
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content">
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-stretch">
+        <ion-col size="12" size-md="6" *ngFor="let star of stars">
+          <ion-card class="star-card">
+            <ion-card-header>
+              <ion-item detail="false" lines="none">
+                {{star.name}}
+              </ion-item>
+            </ion-card-header>
+
+            <ion-card-content>
+
+              <span *ngIf="star.template == 'css'" class="css-star"></span>
+
+              <!--<canvas *ngIf="star.template == 'canvas'" id="canvas-star" width = "400" height = "200"></canvas>-->
+
+              <svg *ngIf="star.template == 'svg'" height="25" width="23" class="svg-star">
+                <polygon points="9.9, 1.1, 3.3, 21.78, 19.8, 8.58, 0, 8.58, 16.5, 21.78" style="fill-rule:nonzero;"/>
+              </svg>
+
+              <ion-icon *ngIf="star.template == 'ionicon'" name="star"></ion-icon>
+
+              <span *ngIf="star.template == 'symbol'">☆</span>
+
+            </ion-card-content>
+
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  <span class="css-star absolute-css-star"></span>
+
+</ion-content>
