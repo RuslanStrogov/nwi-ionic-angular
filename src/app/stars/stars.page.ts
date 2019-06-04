@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-stars',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class StarsPage {
   stars: any[] = [];
 
-  constructor() {}
+  constructor(public alertController: AlertController) {}
 
     ionViewDidEnter() {
         this.stars = [
@@ -30,30 +31,23 @@ export class StarsPage {
             },
         ];
 
-        this.initStars();
-
+        setTimeout(()=>{
+            this.presentAlert();
+        }, 1000);
+        
     }
 
-    initStars() {
-      // Canvas
-      //   const canvas = document.getElementById('canvas-star');
-      //   const context = canvas.getContext('2d');
-        //
-        // canvas.beginPath();
-        // canvas.moveTo(50, 50);
-        // canvas.lineTo(120, 150);
-        // canvas.lineTo(0, 180);
-        // canvas.lineTo(120, 210);
-        // canvas.lineTo(50, 310);
-        // canvas.lineTo(160, 250);
-        // canvas.lineTo(190, 370);
-        // canvas.lineTo(220, 250);
-        // canvas.lineTo(330, 310);
-        // canvas.lineTo(260, 210);
-        // canvas.lineTo(380, 180);
-        // canvas.closePath();
-        // canvas.stroke();
+    async presentAlert() {
+        const alert = await this.alertController.create({
+            header: 'Alert',
+            subHeader: 'Subtitle',
+            message: 'This is an alert message.',
+            buttons: ['OK']
+        });
 
+        await alert.present();
     }
+
+
 
 }
